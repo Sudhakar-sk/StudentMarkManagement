@@ -1,0 +1,31 @@
+﻿@model StudentMarkManagement.Core.Models.StudentMarks
+@{
+    ViewBag.title = "AddStudentMark";
+}
+
+@using (Html.BeginForm("AddStudentMark", "Student", FormMethod.Post, new { @id = "FormDetails" }))
+{
+<div class="form-group">
+    <label>Name</label>
+    @*<div> @Html.EditorFor(ViewBag.Name, new { @class = "form-control" })</div>*@
+<div>@Html.DropDownListFor(Modal => Modal.Name, (IEnumerable<SelectListItem>)ViewBag.Name, "---Select Student Name---", new { @class = "col-xl-6 col-lg-6 col-sm-6 col-8  mb-3 py-2 px-2" })</div> 
+</div>
+
+    <div class="form-group">
+        <label>Mark 1:</label>
+        <div> @Html.EditorFor(m => m.Mark1, new { @class = "form-control" })</div>
+    </div>
+
+    <div class="form-group">
+        <label>Mark 2</label>
+        <div>
+            @Html.EditorFor(m => m.Mark2, new { @class = "form-control" })
+        </div>
+    </div>
+   
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}
+
+            

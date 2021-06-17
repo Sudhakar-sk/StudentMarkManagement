@@ -1,0 +1,35 @@
+﻿@model StudentMarkManagement.Core.Models.StudentDetails
+
+@{
+    ViewBag.title = "AddStudent";
+}
+
+<div class="container">
+    @using (Html.BeginForm("AddStudent", "Student", FormMethod.Post, new { @id = "FormDetails" }))
+    {
+    <div class="row">
+        <div class="form-group">
+            <label>Name</label>
+            @Html.EditorFor(m => m.Name,new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            @Html.EditorFor(m => m.Email, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Department</label>
+            @Html.EditorFor(m => m.Department, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Gender</label>
+            @Html.RadioButtonFor(Modal => Modal.Gender, "Male")<span>Male</span>
+            @Html.RadioButtonFor(Modal => Modal.Gender, "Female")<span>Female</span>
+        </div>
+
+    </div>
+
+        <div class="row">
+            <button tepe="submit" class="btn btn-primary">Save</button>
+        </div>
+    }
+</div>

@@ -1,0 +1,46 @@
+﻿
+@model List<StudentMarkManagement.Core.Models.StudentMarks>
+
+@{ 
+    ViewBag.title = "StudentMarkList";
+}
+<div class="container">
+
+    <table class="table table-hover">
+        <tr>
+
+
+            <th>Name</th>
+            <th>Mark 1</th>
+            <th>Mark2</th>
+            <th>Total</th>
+            <th>Action</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.StudentName </td>
+                <td>@item.Mark1</td>
+                <td> @item.Mark2 </td>
+                <td> @item.Total</td>
+                <td>
+                    @*<i class="glyphicon glyphicon-trash">
+                            @Html.ActionLink("Delete", "Delete", new { id = item.StudentId }, new { onclick = "return confirm('Are sure wants to delete?');" })
+                        </i>*@
+                    <button class="btn btn-danger" type="button" id="@item.StudentId" onclick="DeleteMark(this.id)">delete</button>
+
+                </td>
+
+            </tr>
+        }
+    </table>
+</div>
+<script>
+     function DeleteMark(id) {
+        if (confirm("Are sure wants to delete?")) {
+            window.location.href = "@Url.Action("DeleteMark", "Student")?Id=" + id;
+        }
+    }
+</script>
